@@ -41,7 +41,20 @@ pipeline {
           checkout scm
         }
       }
-    } 
+    }
+    stage('Invoke ARO - Deploy to Prod') {
+      when {
+        beforeAgent true
+        branch 'master'
+      }
+      steps {
+        cloudBeesFlowCallRestApi body: '{"pipelineParameter":[{"pipelineParameterName":"microblog-frontend_version","value":"1.0.6"},{"pipelineParameterName":"microblog-backend_version","value":"1.0.2"},{"pipelineParameterName":"microblog-db_version","value":"12.1-alpine"}]}',
+        configuration: 'CB Flow', 
+        envVarNameForResult: 'CALL_REST_API_CREATE_PROJECT_RESULT', 
+        httpMethod: 'POST', 
+        urlPath: '/releases?projectName=dtidwell%20Demo&releaseName=Blog%202020-04-30'
+      }
+    }
   }
 }
 
