@@ -46,7 +46,7 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          helm install test ./chart --namespace test --create-namespace
+          helm install test1 ./chart
           '''
         }
       }
