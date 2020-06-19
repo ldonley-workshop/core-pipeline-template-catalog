@@ -38,8 +38,6 @@ pipeline {
         }
       }
     }  
-  }
-  stages('Deploy') {
     stage('Run Helm install') {
       when {
         beforeAgent true
