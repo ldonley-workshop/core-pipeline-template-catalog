@@ -22,6 +22,10 @@ parameters:
   - name: githubCredentialId
     displayName: GitHub Credential ID
     type: CREDENTIALS
+  - name: registry
+    type: string
+    displayName: Docker registry
+    defaultValue: docker.cb-demos.io
 multibranch:
   branchSource:
     github:

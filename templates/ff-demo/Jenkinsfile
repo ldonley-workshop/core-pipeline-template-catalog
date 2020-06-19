@@ -12,13 +12,13 @@ pipeline {
   }
   stages('Build images')
   {
-    stage('Build and Push Image') {
+    stage('Build and Push Backend image') {
       when {
         beforeAgent true
         branch 'master'
       }
       steps { 
-        kanikoBuildPushGeneric("${username}-news-backend", "latest", "core-flow-research", "news-backend/Dockerfile")
+        imgBuildNexusGeneric("news-backend", "${username}", "${registry}", "news-backend/Dockerfile")
         {
           checkout scm
         }
