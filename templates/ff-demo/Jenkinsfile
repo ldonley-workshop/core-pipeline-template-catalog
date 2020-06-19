@@ -1,0 +1,34 @@
+library 'cb-days@ff-master'
+pipeline {
+  agent none
+  options { 
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    skipDefaultCheckout true
+    preserveStashes(buildCount: 2)
+  }
+  environment {
+    repoOwner = "${repoOwner}"
+    credId = "${githubCredentialId}"
+  }
+  stages('Build images')
+  {
+    stage('Build and Push Image') {
+      when {
+        beforeAgent true
+        branch 'master'
+      }
+      steps { 
+        kanikoBuildPushGeneric("${username}-news-backend", "latest")
+        {
+          checkout scm
+        }
+      }
+      post {
+        success {
+          echo "${JOB_NAME} pipeline job is awaiting approval at: ${RUN_DISPLAY_URL}"
+        }
+      }
+    }  
+  }
+}
+
