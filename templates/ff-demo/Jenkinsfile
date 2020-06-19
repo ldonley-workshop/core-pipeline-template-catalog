@@ -23,9 +23,16 @@ pipeline {
           checkout scm
         }
       }
-      post {
-        success {
-          echo "${JOB_NAME} pipeline job is awaiting approval at: ${RUN_DISPLAY_URL}"
+    }
+    stage('Build and Push Frontend image') {
+      when {
+        beforeAgent true
+        branch 'master'
+      }
+      steps { 
+        imgBuildNexusGeneric("news-frontend", "${username}", "${registry}", "news-frontend")
+        {
+          checkout scm
         }
       }
     }  
