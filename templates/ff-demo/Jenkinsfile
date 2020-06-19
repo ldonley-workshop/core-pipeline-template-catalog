@@ -46,8 +46,7 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          kubectl get pods
-          helm version
+          helm install test ./chart --namespace test --create-namespace
           '''
         }
       }
