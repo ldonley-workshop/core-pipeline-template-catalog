@@ -1,4 +1,4 @@
-library 'cb-days@ff-master'
+library 'cb-days@ff-demo'
 pipeline {
   agent none
   options { 
