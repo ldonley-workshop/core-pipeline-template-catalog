@@ -46,9 +46,9 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          cd chart
+          cd chart/backend
           helm dependency update
-          cd ..
+          cd ../..
           helm install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.cb-demos.io --set frontend.ingress.host=frontend.${username}.cb-demos.io
           '''
         }
