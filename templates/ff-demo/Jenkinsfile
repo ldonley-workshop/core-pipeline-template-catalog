@@ -46,9 +46,7 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          kubectl get pods
-          kubectl get ingress
-          helm install test1 ./chart
+          helm install test1 ./chart --debug
           '''
         }
       }
