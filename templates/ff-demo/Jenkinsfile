@@ -46,8 +46,6 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-          helm repo update
           cd chart/charts/backend
           helm dependency update
           cd ../../..
