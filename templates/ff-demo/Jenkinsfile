@@ -46,7 +46,6 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          sleep 600
           cd chart/charts/backend
           helm dependency update
           cd ../../..
