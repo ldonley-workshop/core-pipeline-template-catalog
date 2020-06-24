@@ -2,7 +2,7 @@ library 'cb-days@ff-demo'
 pipeline {
   agent none
   options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
+    buildDiscarder(logRotator(numToKeepStr: '10'))
     skipDefaultCheckout true
     preserveStashes(buildCount: 2)
   }
@@ -46,7 +46,6 @@ pipeline {
       steps {
         helmDeploy(){
           sh'''
-          sleep 1000
           cd chart/charts/backend
           helm dependency update
           cd ../../..
