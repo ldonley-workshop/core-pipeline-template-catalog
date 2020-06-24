@@ -45,12 +45,12 @@ pipeline {
       }
       steps {
         helmDeploy(){
-          sh'''
+          sh"""
           cd chart/charts/backend
           helm dependency update
           cd ../../..
           helm install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.cb-demos.io --set frontend.ingress.host=frontend.${username}.cb-demos.io
-          '''
+          """
         }
       }
     }
