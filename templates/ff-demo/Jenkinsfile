@@ -49,7 +49,7 @@ pipeline {
           cd chart/charts/backend
           helm dependency update
           cd ../../..
-          helm upgrade --install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.${baseDomain} --set frontend.ingress.host=frontend.${username}.${baseDomain} --set backend.image.repository=${registry}/${username}/news-backend --set backend.image.tag=${env.BUILD_NUMBER} --set backend.imagePullSecrets={nexuscred} --set frontend.image.repository=${registry}/${username}/news-frontend --set frontend.image.tag=${env.BUILD_NUMBER} --set frontend.imagePullSecrets={nexuscred}
+          helm upgrade --install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.${baseDomain} --set frontend.ingress.host=frontend.${username}.${baseDomain} --set backend.image.repository=${registry}/${username}/news-backend --set backend.image.tag=${env.BUILD_NUMBER} --set backend.imagePullSecrets={name=nexuscred} --set frontend.image.repository=${registry}/${username}/news-frontend --set frontend.image.tag=${env.BUILD_NUMBER} --set frontend.imagePullSecrets={name=nexuscred}
           """
         }
       }
