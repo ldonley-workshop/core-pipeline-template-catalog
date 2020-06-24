@@ -26,6 +26,10 @@ parameters:
     type: string
     displayName: Docker registry
     defaultValue: docker.cb-demos.io
+  - name: baseDomain
+    type: string
+    displayName: Base domain
+    defaultValue: cb-demos.io
 multibranch:
   branchSource:
     github:

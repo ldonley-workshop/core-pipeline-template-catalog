@@ -33,7 +33,7 @@ pipeline {
         imgBuildNexusGeneric("news-frontend", "${username}", "${registry}", "news-frontend")
         {
           checkout scm
-          sh "sed -i 's,REPLACE_BACKEND_URL,http://backend.${username}.cb-demos.io,g' news-frontend/.env"
+          sh "sed -i 's,REPLACE_BACKEND_URL,http://backend.${username}.${baseDomain},g' news-frontend/.env"
           sh "sed -i 's,REPLACE_CB_FF_API_KEY,${cbffApiKey},g' news-frontend/.env"
         }
       }
@@ -49,7 +49,9 @@ pipeline {
           cd chart/charts/backend
           helm dependency update
           cd ../../..
-          helm upgrade --install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.cb-demos.io --set frontend.ingress.host=frontend.${username}.cb-demos.io --debug
+          helm upgrade --install ${username}-ff ./chart --set backend.ffKey=${cbffApiKey} --set backend.ingress.host=backend.${username}.${baseDomain} --set frontend.ingress.host=frontend.${username}.${baseDomain} --debug
+          sleep 15
+          curl http://backend.${username}.${baseDomain}/run-helper
           """
         }
       }
