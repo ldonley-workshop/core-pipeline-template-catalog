@@ -36,7 +36,7 @@ pipeline {
         branch 'master'
       }
       steps { 
-        kanikoBuildPushGeneric("microblog-frontend", "latest", "${registry}")
+        kanikoBuildPushGeneric("microblog-frontend", "latest", "${gcpProject}")
         {
           checkout scm
         }

@@ -17,10 +17,6 @@ parameters:
     type: string
     displayName: GCP Project
     defaultValue: core-flow-research
-  - name: registry
-    type: string
-    displayName: Docker Registry
-    defaultValue: gcr.io/core-flow-research
 multibranch:
   branchSource:
     github:
