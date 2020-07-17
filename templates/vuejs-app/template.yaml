@@ -16,11 +16,11 @@ parameters:
   - name: gcpProject
     type: string
     displayName: GCP Project
-    defaultValue: core-workshop
+    defaultValue: core-flow-research
   - name: registry
     type: string
     displayName: Docker Registry
-    defaultValue: docker.cb-demos.io
+    defaultValue: gcr.io/core-flow-research
 multibranch:
   branchSource:
     github:

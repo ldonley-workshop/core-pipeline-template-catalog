@@ -36,7 +36,7 @@ pipeline {
         branch 'master'
       }
       steps { 
-        imgBuildNexus("microblog-frontend", "${repoOwner}", "${registry}")
+        kanikoBuildPushGeneric("microblog-frontend", "latest", "${registry}")
         {
           checkout scm
         }
