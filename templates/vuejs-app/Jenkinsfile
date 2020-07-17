@@ -39,6 +39,7 @@ pipeline {
         kanikoBuildPushGeneric("microblog-frontend", "latest", "${gcpProject}")
         {
           checkout scm
+          sleep 600
         }
       }
     } 
