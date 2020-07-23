@@ -35,7 +35,7 @@ pipeline {
         branch 'master'
       }
       steps { 
-        imgBuildNexus("microblog-backend", "${repoOwner}", "${registry}")
+        kanikoBuildPushGeneric("microblog-backend", "latest", "${gcpProject}")
         {
           checkout scm
         }
