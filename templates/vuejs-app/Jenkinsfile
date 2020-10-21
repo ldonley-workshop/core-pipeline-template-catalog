@@ -48,6 +48,7 @@ pipeline {
             beforeAgent true
             branch 'master'
         }
+        agent any
         steps {
             checkout scm
             script {
