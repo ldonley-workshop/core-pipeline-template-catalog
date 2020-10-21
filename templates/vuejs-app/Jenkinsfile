@@ -50,9 +50,9 @@ pipeline {
         }
         agent any
         steps {
-            checkout scm
             script {
                 node() {
+                    checkout scm
                     env.VERSION = readFile 'version.txt'
                     env.VERSION = env.VERSION.trim()
                     imageTag = env.VERSION
