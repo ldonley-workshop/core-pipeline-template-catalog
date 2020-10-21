@@ -49,6 +49,7 @@ pipeline {
             branch 'master'
         }
         steps {
+            checkout scm
             script {
                 node() {
                     env.VERSION = readFile 'version.txt'
